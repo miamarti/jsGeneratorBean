@@ -15,6 +15,11 @@
     <script src="http://codemirror.net/addon/selection/active-line.js"></script>
     <script src="http://codemirror.net/addon/edit/matchbrackets.js"></script>
     <script src="jsGeneratorBean-v1.0.1.min.js"></script>
+    <script>
+      var setNew = function(){
+        localStorage.setItem('payload', "{\n  name : 'NameOfYourClass',\n  angular : true,\n  appName : 'YourApplicationAngularJs',\n  signature : {\n    'title' : '',\n    'value' : ''\n  }\n}");
+      };
+    </script>
     <title>jsGeneratorBean .'.</title>
 
     <!-- Bootstrap core CSS -->
@@ -47,7 +52,7 @@
               <h3 class="masthead-brand">jsGeneratorBean</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="index.html">New</a></li>
+                  <li class="active"><a onclick="setNew()">New</a></li>
                 </ul>
               </nav>
             </div>
@@ -97,9 +102,6 @@
                   localStorage.setItem('payload', payload);
                   editor.setValue(jsGeneratorBean((new Function('return ' + editor.getValue() + ';'))()));
                 }
-              };
-              var setNew = function(){
-                localStorage.setItem('payload', "{\n  name : 'NameOfYourClass',\n  angular : true,\n  appName : 'YourApplicationAngularJs',\n  signature : {\n    'title' : '',\n    'value' : ''\n  }\n}");
               };
             </script>
             <p class="lead">
