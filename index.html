@@ -66,13 +66,14 @@
             <script>
               var editor = CodeMirror.fromTextArea(document.getElementById("condeConfig"), {
                 lineNumbers: true,
-                mode: "text/html",
+                mode: "text/javascript",
                 matchBrackets: true,
                 theme: "monokai"
               });
               var generateNow = function(){
                 //document.getElementById('condeConfig').value = "";
                 console.log(editor.getValue());
+                editor.setValue("{'a':20, 'b':50}");
               }
             </script>
             <p class="lead">
