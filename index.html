@@ -49,11 +49,11 @@
 
       <div class="site-wrapper-inner">
 
-        <div class="cover-container" style="width: 900px;">
+        <div itemscope itemtype="http://schema.org/SoftwareApplication" class="cover-container" style="width: 900px;">
 
           <div class="masthead clearfix" style="width: 900px;">
             <div class="inner">
-              <h3 class="masthead-brand">jsGeneratorBean</h3>
+              <h3 itemprop="name" class="masthead-brand">jsGeneratorBean</h3>
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a onclick="setNew()" style="cursor: pointer;">New</a></li>
@@ -63,8 +63,8 @@
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Bean JS Angular generator</h1>
-            <p class="lead">Enter your signature in json format.</p>
+            <h1 class="cover-heading"><span itemprop="operatingSystem">Bean</span> JS <span itemprop="applicationCategory">Angular</span> generator</h1>
+            <p class="lead">Enter your signature in <span itemprop="requirements">json</span> format.</p>
             <p class="clearfix" style="display: inline-table; width: 100%; margin: 20px;text-align: left;">
                 <textarea id="condeConfig">{
   name : 'NameOfYourClass',
@@ -114,7 +114,8 @@
           </div>
           <div class="mastfoot" style="width: 900px;">
             <div class="inner">
-              <p>developed by <a href="https://gitto.io/r/miamarti">Miller Augusto</a>, visit on <a href="https://github.com/miamarti/jsGeneratorBean">github</a>.</p>
+              <p>developed by <a href="https://gitto.io/r/miamarti"><span itemprop="author" itemscope itemtype="http://schema.org/Person">
+<span itemprop="name">Miller Augusto</span></span></a>, visit on <a itemprop="url" href="https://github.com/miamarti/jsGeneratorBean">github</a>.</p>
             </div>
           </div>
 
