@@ -37,7 +37,7 @@
 
       <div class="site-wrapper-inner">
 
-        <div class="cover-container">
+        <div class="cover-container" style="width: 900px;">
 
           <div class="masthead clearfix" style="width: 900px;">
             <div class="inner">
@@ -69,11 +69,11 @@
                 lineNumbers: true,
                 matchBrackets: true,
                 styleActiveLine: true,
-                matchBrackets: true
+                matchBrackets: true,
+                theme : 'monokai'
               });
               var generateNow = function(){
                 editor.setValue(jsGeneratorBean((new Function('return ' + editor.getValue() + ';'))()));
-                editor.setOption("theme", "monokai");
               }
             </script>
             <p class="lead">
