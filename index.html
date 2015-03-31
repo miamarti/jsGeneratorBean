@@ -10,7 +10,7 @@
 
     <link rel=stylesheet href="https://codemirror.net/lib/codemirror.css">
     <script src="https://codemirror.net/lib/codemirror.js"></script>
-
+    <script src="jsGeneratorBean-v1.0.1.min.js"></script>
     <title>jsGeneratorBean .'.</title>
 
     <!-- Bootstrap core CSS -->
@@ -63,18 +63,22 @@
   }
 }</textarea>
             </p>
+            <script>
+              var editor = CodeMirror.fromTextArea(document.getElementById("condeConfig"), {
+                lineNumbers: true,
+                mode: "text/html",
+                matchBrackets: true,
+                theme: "monokai"
+              });
+              var generateNow = function(){
+                console.log(document.getElementById('condeConfig').value);
+                console.log(editor);
+              }
+            </script>
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Generate now</a>
+              <a onclick="generateNow()" class="btn btn-lg btn-default">Generate now</a>
             </p>
           </div>
-          <script>
-            var editor = CodeMirror.fromTextArea(document.getElementById("condeConfig"), {
-              lineNumbers: true,
-              mode: "text/html",
-              matchBrackets: true,
-              theme: "monokai"
-            });
-          </script>
           <div class="mastfoot">
             <div class="inner">
               <p>developed by <a href="https://gitto.io/r/miamarti">Miller Augusto</a>.</p>
