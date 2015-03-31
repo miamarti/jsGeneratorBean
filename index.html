@@ -16,8 +16,11 @@
     <script src="http://codemirror.net/addon/edit/matchbrackets.js"></script>
     <script src="jsGeneratorBean-v1.0.1.min.js"></script>
     <script>
+      var editor = {};
+      var example = "{\n  name : 'NameOfYourClass',\n  angular : true,\n  appName : 'YourApplicationAngularJs',\n  signature : {\n    'title' : '',\n    'value' : ''\n  }\n}";
       var setNew = function(){
-        localStorage.setItem('payload', "{\n  name : 'NameOfYourClass',\n  angular : true,\n  appName : 'YourApplicationAngularJs',\n  signature : {\n    'title' : '',\n    'value' : ''\n  }\n}");
+        localStorage.setItem('payload', example);
+        editor.setValue(example);
       };
     </script>
     <title>jsGeneratorBean .'.</title>
@@ -52,7 +55,7 @@
               <h3 class="masthead-brand">jsGeneratorBean</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a onclick="setNew()">New</a></li>
+                  <li class="active"><a onclick="setNew()" style="cursor: pointer;">New</a></li>
                 </ul>
               </nav>
             </div>
@@ -73,7 +76,7 @@
 }</textarea>
             </p>
             <script>
-              var editor = CodeMirror.fromTextArea(document.getElementById("condeConfig"), {
+              editor = CodeMirror.fromTextArea(document.getElementById("condeConfig"), {
                 lineNumbers: true,
                 matchBrackets: true,
                 styleActiveLine: true,
@@ -86,7 +89,7 @@
               if(localStorage.getItem('payload') != null){
                 payload = localStorage.getItem('payload');
               } else {
-                payload = "{\n  name : 'NameOfYourClass',\n  angular : true,\n  appName : 'YourApplicationAngularJs',\n  signature : {\n    'title' : '',\n    'value' : ''\n  }\n}";
+                payload = example;
               }
               editor.setValue(payload);
               
