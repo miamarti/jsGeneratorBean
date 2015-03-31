@@ -75,12 +75,23 @@
                 matchBrackets: true,
                 theme : 'monokai'
               });
-              var generateNow = function(){
-                editor.setValue(jsGeneratorBean((new Function('return ' + editor.getValue() + ';'))()));
+              var payload = "";
+              var edit = false;
+              var generateNow = function(btn){
+                if(edit){
+                  btn.innerHTML = 'Generate now';
+                  editor.setValue(payload);
+                  edit = false;
+                } else {
+                  btn.innerHTML = 'Edit configuration';
+                  edit = true;
+                  payload = editor.getValue();
+                  editor.setValue(jsGeneratorBean((new Function('return ' + editor.getValue() + ';'))()));
+                }
               }
             </script>
             <p class="lead">
-              <a onclick="generateNow()" class="btn btn-lg btn-default">Generate now</a>
+              <a onclick="generateNow(this)" class="btn btn-lg btn-default">Generate now</a>
             </p>
           </div>
           <div class="mastfoot" style="width: 900px;">
