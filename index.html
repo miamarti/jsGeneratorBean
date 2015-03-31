@@ -69,10 +69,12 @@
                 lineNumbers: true,
                 mode: "text/javascript",
                 matchBrackets: true,
-                theme: "monokai"
+                styleActiveLine: true,
+                matchBrackets: true
               });
               var generateNow = function(){
                 editor.setValue(jsGeneratorBean((new Function('return ' + editor.getValue() + ';'))()));
+                editor.setOption("theme", "monokai");
               }
             </script>
             <p class="lead">
