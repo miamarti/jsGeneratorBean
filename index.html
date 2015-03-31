@@ -71,8 +71,7 @@
                 theme: "monokai"
               });
               var generateNow = function(){
-                jsGeneratorBean((new Function('return ' + editor.getValue() + ';'))());
-                //editor.setValue("{'a':20, 'b':50}");
+                editor.setValue(jsGeneratorBean((new Function('return ' + editor.getValue() + ';'))()));
               }
             </script>
             <p class="lead">
