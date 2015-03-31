@@ -75,10 +75,16 @@
                 matchBrackets: true,
                 theme : 'monokai'
               });
-              console.log(localStorage.getItem('payload'));
               
               var payload = "";
               var edit = false;
+              if(localStorage.getItem('payload') != null){
+                payload = localStorage.getItem('payload');
+              } else {
+                payload = "{\n  name : 'NameOfYourClass',\n  angular : true,\n  appName : 'YourApplicationAngularJs',\n  signature : {\n    'title' : '',\n    'value' : ''\n  }\n}";
+              }
+              editor.setValue(payload);
+              
               var generateNow = function(btn){
                 if(edit){
                   btn.innerHTML = 'Generate now';
