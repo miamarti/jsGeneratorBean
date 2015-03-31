@@ -75,6 +75,8 @@
                 matchBrackets: true,
                 theme : 'monokai'
               });
+              console.log(localStorage.getItem('payload'));
+              
               var payload = "";
               var edit = false;
               var generateNow = function(btn){
@@ -86,9 +88,13 @@
                   btn.innerHTML = 'Edit configuration';
                   edit = true;
                   payload = editor.getValue();
+                  localStorage.setItem('payload', payload);
                   editor.setValue(jsGeneratorBean((new Function('return ' + editor.getValue() + ';'))()));
                 }
-              }
+              };
+              var setNew = function(){
+                localStorage.setItem('payload', "{\n  name : 'NameOfYourClass',\n  angular : true,\n  appName : 'YourApplicationAngularJs',\n  signature : {\n    'title' : '',\n    'value' : ''\n  }\n}");
+              };
             </script>
             <p class="lead">
               <a onclick="generateNow(this)" class="btn btn-lg btn-default">Generate now</a>
