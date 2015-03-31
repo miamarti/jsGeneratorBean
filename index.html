@@ -7,7 +7,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+
+    <link rel=stylesheet href="https://codemirror.net/lib/codemirror.css">
+    <script src="https://codemirror.net/lib/codemirror.js"></script>
 
     <title>jsGeneratorBean .'.</title>
 
@@ -51,10 +53,29 @@
             <h1 class="cover-heading">Bean JS generator</h1>
             <p class="lead">Enter your signature in json format.</p>
             <p class="lead">
+                <textarea id="condeConfig">
+{
+  name : 'SellerIntegrationCardBean',
+  angular : true,
+  appName : 'SellersApp',
+  signature : {
+    'title' : '',
+    'value' : ''
+  }
+}
+                </textarea>
+            </p>
+            <p class="lead">
               <a href="#" class="btn btn-lg btn-default">Generate now</a>
             </p>
           </div>
-
+          <script>
+            var editor = CodeMirror.fromTextArea(document.getElementById("condeConfig"), {
+              lineNumbers: true,
+              mode: "text/html",
+              matchBrackets: true
+            });
+          </script>
           <div class="mastfoot">
             <div class="inner">
               <p>developed by <a href="https://gitto.io/r/miamarti">Miller Augusto</a>.</p>
