@@ -1,3 +1,9 @@
+/*
+* jsGeneratorBean
+* JavaScript POJO generator based on a json signature.
+* @autor: Miller Augusto Silva Martins
+* @email: miller.augusto@gmail.com
+**/
 var jsGeneratorBean = function(config){
   var declarationVariables = '';
   var constructor = '';
