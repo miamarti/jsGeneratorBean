@@ -70,7 +70,10 @@ var jsGeneratorBean = function(config){
       bean = config.appName.camelCase() + '.factory(\'' + config.name.camelCase() + '\', [ function() {' + bean + '    return ' + config.name.camelCase() + ';\n\n' + '} ]);';
   }
   
-  console.info(config.name + '.js');
-  //console.log(bean);
+  try {
+      document.getElementById('jsGeneratorBean-fileName').innerHTML = config.name + '.js';    
+  } catch (e) {
+  }
+ 
   return bean;
 };
