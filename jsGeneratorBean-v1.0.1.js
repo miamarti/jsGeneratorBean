@@ -4,24 +4,31 @@
 * @autor: Miller Augusto Silva Martins
 * @email: miller.augusto@gmail.com
 **/
+String.prototype.camelCase = function() {
+  var s = (this).replace(/_/g, ' ');
+	return (s || '').toLowerCase().replace(/(\b|-)\w/g, function(m) {
+	    return m.toUpperCase().replace(/-/, '');
+	}).replace(/\s/gi, '');
+};
 var jsGeneratorBean = function(config){
   var declarationVariables = '';
   var constructor = '';
   var proto = '';
   
   for(key in config.signature){
-    constructor += '        	    bean.set' + key.replace((key.substring(0,1)), (key.substring(0,1)).toUpperCase()) + '(data[0].' + key + ');\n';
-    declarationVariables += '        	this.' + key + ';\n';
+    var factor = key.camelCase();
+    constructor += '        	    bean.set' + factor.replace((factor.substring(0,1)), (factor.substring(0,1)).toUpperCase()) + '(data[0].' + factor + ');\n';
+    declarationVariables += '        	this.' + factor + ';\n';
     
     proto += '\n\n';
     proto += '        	 /*\n';
-    proto += '        	 * ' + key + '\n';
+    proto += '        	 * ' + factor + '\n';
     proto += '        	 */\n';
-    proto += '        	 set' + key.replace((key.substring(0,1)), (key.substring(0,1)).toUpperCase()) + ' : function(value) {\n';
-    proto += '        	 	    this.' + key + ' = value;\n';
+    proto += '        	 set' + factor.replace((factor.substring(0,1)), (factor.substring(0,1)).toUpperCase()) + ' : function(value) {\n';
+    proto += '        	 	    this.' + factor + ' = value;\n';
     proto += '        	 },\n';
-    proto += '        	 get' + key.replace((key.substring(0,1)), (key.substring(0,1)).toUpperCase()) + ' : function() {\n';
-    proto += '        	 	    return this.' + key + ';\n';
+    proto += '        	 get' + factor.replace((factor.substring(0,1)), (factor.substring(0,1)).toUpperCase()) + ' : function() {\n';
+    proto += '        	 	    return this.' + factor + ';\n';
     proto += '        	 },';
   }
   
@@ -30,9 +37,9 @@ var jsGeneratorBean = function(config){
   var bean = '';
       bean += '\n';
       bean += '\n    /*\n';
-      bean += '    * Class ' + config.name + '\n';
+      bean += '    * Class ' + config.name.camelCase() + '\n';
       bean += '    */\n';
-      bean += '    var ' + config.name + ' = function() {\n\n';
+      bean += '    var ' + config.name.camelCase() + ' = function() {\n\n';
   
       bean += '        	/*\n';
       bean += '        	 * Constructor\n';
@@ -54,16 +61,16 @@ var jsGeneratorBean = function(config){
       bean += '    * POJO Bean\n';
       bean += '    */\n';
   
-      bean += '    ' + config.name + '.prototype = {';
+      bean += '    ' + config.name.camelCase() + '.prototype = {';
       bean += proto;
       bean += '\n    };';
       bean += '\n\n\n';
 
   if(config.angular){
-      bean = config.appName + '.factory(\'' + config.name + '\', [ function() {' + bean + '    return ' + config.name + ';\n\n' + '} ]);';
+      bean = config.appName.camelCase() + '.factory(\'' + config.name.camelCase() + '\', [ function() {' + bean + '    return ' + config.name.camelCase() + ';\n\n' + '} ]);';
   }
   
   console.info(config.name + '.js');
-  console.log(bean);
+  //console.log(bean);
   return bean;
 };
