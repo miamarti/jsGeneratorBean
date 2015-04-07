@@ -14,6 +14,7 @@ var jsGeneratorBean = function(config){
   var declarationVariables = '';
   var constructor = '';
   var proto = '';
+  config.name = config.name.camelCase() + 'Bean';
   
   for(key in config.signature){
     var factor = key.camelCase();
@@ -37,9 +38,9 @@ var jsGeneratorBean = function(config){
   var bean = '';
       bean += '\n';
       bean += '\n    /*\n';
-      bean += '    * Class ' + config.name.camelCase() + '\n';
+      bean += '    * Class ' + config.name + '\n';
       bean += '    */\n';
-      bean += '    var ' + config.name.camelCase() + ' = function() {\n\n';
+      bean += '    var ' + config.name + ' = function() {\n\n';
   
       bean += '        	/*\n';
       bean += '        	 * Constructor\n';
@@ -61,13 +62,13 @@ var jsGeneratorBean = function(config){
       bean += '    * POJO Bean\n';
       bean += '    */\n';
   
-      bean += '    ' + config.name.camelCase() + '.prototype = {';
+      bean += '    ' + config.name + '.prototype = {';
       bean += proto;
       bean += '\n    };';
       bean += '\n\n\n';
 
   if(config.angular){
-      bean = config.appName.camelCase() + '.factory(\'' + config.name.camelCase() + '\', [ function() {' + bean + '    return ' + config.name.camelCase() + ';\n\n' + '} ]);';
+      bean = config.appName + '.factory(\'' + config.name + '\', [ function() {' + bean + '    return ' + config.name + ';\n\n' + '} ]);';
   }
   
   try {
